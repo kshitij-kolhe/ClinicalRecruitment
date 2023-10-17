@@ -1,0 +1,116 @@
+<div class="mat-elevation-z8 tableContainer m-3" *ngIf="!fetchingPatients">
+  <table mat-table [dataSource]="patients" matSort class="table table-hover">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header id="id"> ID </th>
+      <td mat-cell *matCellDef="let row; let i = index"> {{row.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name" >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header id="name"> Name </th>
+      <td mat-cell *matCellDef="let row; let i = index">
+
+        <ng-container *ngIf="selectedRow !== i">
+          {{row.name}}
+        </ng-container>
+
+        <ng-container *ngIf="selectedRow === i">
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput type="text" [formControl]="firstName" required>
+            <mat-error *ngIf="firstName.invalid">error</mat-error>
+          </mat-form-field>
+        </ng-container>
+
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header id="age"> Age </th>
+      <td mat-cell *matCellDef="let row; let i = index">
+
+        <ng-container *ngIf="selectedRow !== i">
+          {{row.age}}
+        </ng-container>
+
+        <ng-container *ngIf="selectedRow === i">
+          <mat-form-field>
+            <mat-label>Age</mat-label>
+            <input matInput type="number" min="0" max="110" [formControl]="age" required>
+            <mat-error *ngIf="age.invalid">error</mat-error>
+          </mat-form-field>
+        </ng-container>
+
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header id="gender"> Gender </th>
+      <td mat-cell *matCellDef="let row; let i = index">
+
+        <ng-container *ngIf="selectedRow !== i">
+          {{row.gender}}
+        </ng-container>
+
+        <ng-container *ngIf="selectedRow === i">
+          <mat-form-field>
+            <mat-label>Gender</mat-label>
+            <mat-select [formControl]="gender" required>
+              <mat-option *ngFor="let g of genders" [value]="g"> {{g}} </mat-option>
+            </mat-select>
+            <mat-error *ngIf="gender.hasError('required')">Please choose a gender</mat-error>
+          </mat-form-field>
+        </ng-container>
+
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="medicalCondition">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header id="medicalCondition"> Medical Condition </th>
+      <td mat-cell *matCellDef="let row; let i = index">
+
+        <ng-container *ngIf="selectedRow !== i">
+          {{row.medicalCondition}}
+        </ng-container>
+
+        <ng-container *ngIf="selectedRow === i">
+          <mat-form-field>
+            <mat-label>Medical Condition</mat-label>
+            <mat-select [formControl]="medicalCondition" required>
+              <mat-option *ngFor="let condition of medicalConditions" [value]="condition">{{condition}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="medicalCondition.hasError('required')">Please choose an medical condition</mat-error>
+          </mat-form-field>
+        </ng-container>
+
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="enrollDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header id="enrollmentDate"> Enrollment Date </th>
+      <td mat-cell *matCellDef="let row; let i = index"> {{row.enrollDate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action" >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header id="action"> </th>
+      <td mat-cell *matCellDef="let row; let i = index" class="action" >
+
+        <ng-container *ngIf="selectedRow !== i">
+          <i class="bi bi-pencil-fill m-2 align-self-center fs-3" matTooltip="edit" (click)="editRow(i, row)"></i>
+          <i class="bi bi-trash-fill m-2 align-self-center fs-3" matTooltip="delete" (click)="deleteRow(row.id)"></i>
+        </ng-container>
+
+        <ng-container *ngIf="selectedRow === i">
+          <i class="bi bi-check-square m-2 align-self-center fs-3" matTooltip="update" (click)="update(row.id)"></i>
+          <i class="bi bi-x-square m-2 align-self-center fs-3" matTooltip="cancel" (click)="selectedRow = -i-1"></i>
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; let i = index; columns: displayedColumns;"></tr>
+
+  </table>
+
+<!--  <mat-paginator [pageSizeOptions]="[25, 50, 100]" class="mat-paginator-sticky" aria-label="Select page of users"></mat-paginator>-->
+</div>

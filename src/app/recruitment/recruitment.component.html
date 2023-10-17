@@ -1,0 +1,73 @@
+<div id="container" class="w-50 m-4 mat-elevation-z8">
+  <div style="--bs-border-color: #6c969d" class="border border-3 rounded">
+
+    <form #form='ngForm' [formGroup]="enrollForm" class="row g-3 p-3" style="color: #6c969d;" (submit)="submit(form)">
+      <legend>Clinical Trial Enrollment </legend>
+
+      <mat-form-field class="col-md-6" >
+        <mat-label>First Name</mat-label>
+        <input matInput type="text" formControlName="firstName" required>
+        <mat-error *ngIf="enrollForm.hasError('required', 'firstName')">error</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-6" >
+        <mat-label>Last Name</mat-label>
+        <input matInput type="text" formControlName="lastName" required>
+        <mat-error *ngIf="enrollForm.hasError('required', 'lastName')">error</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-4" >
+        <mat-label>Age</mat-label>
+        <input matInput type="number" min="0" max="110" formControlName="age" required>
+        <mat-error *ngIf="enrollForm.hasError('required', 'age')">error</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-4">
+
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender" required>
+          <mat-option *ngFor="let g of genders" [value]="g">{{g}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="enrollForm.hasError('required', 'gender')">Please choose a gender</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-4">
+
+        <mat-label>Medical Condition</mat-label>
+        <mat-select formControlName="medicalCondition" required>
+          <mat-option *ngFor="let condition of medicalConditions" [value]="condition">{{condition}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="enrollForm.hasError('required', 'medicalCondition')">Please choose an medical condition</mat-error>
+      </mat-form-field>
+
+      <div class="col-12 d-flex justify-content-center">
+        <button type="submit" [disabled]="formValidation()" class="btn w-25 fs-4" style="background-color: #6c969d; color: white" >Enroll</button>
+      </div>
+    </form>
+
+    <div class="d-flex justify-content-center">
+      <div *ngIf="created" class="alert alert-success" role="alert">
+        You have successfully enrolled for clinical trial !!!
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <div *ngIf="existed" class="alert alert-secondary" role="alert">
+        You are already enrolled for clinical trial !!!
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <div *ngIf="errorCreating" class="alert alert-danger" role="alert">
+        Could not process your request at the time !!!
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <div *ngIf="formInvalid" class="alert alert-danger" role="alert">
+        Please provide all information !!!
+      </div>
+    </div>
+
+  </div>
+</div>

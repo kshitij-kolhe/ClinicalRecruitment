@@ -1,11 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import {NavigationComponent} from "./navigation/navigation.component";
+import {RecruitmentComponent} from "./recruitment/recruitment.component";
+import {StaffDashboardComponent} from "./staff-dashboard/staff-dashboard.component";
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports: [RouterTestingModule],
-    declarations: [AppComponent]
+    declarations: [AppComponent, NavigationComponent, RecruitmentComponent, StaffDashboardComponent]
   }));
 
   it('should create the app', () => {
@@ -18,12 +21,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('ClinicalRecruitment');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('ClinicalRecruitment app is running!');
   });
 });

@@ -1,0 +1,69 @@
+
+.tableContainer {
+  height: calc(95% - 100px);
+  overflow: auto;
+}
+
+.mat-paginator-sticky {
+  bottom: 0;
+  position: sticky;
+  z-index: 10;
+}
+
+.action {
+  height: inherit;
+  text-align: center;
+  vertical-align: middle;
+  content-visibility: hidden;
+}
+
+tr:hover {
+  .action {
+    content-visibility: visible;
+  }
+}
+
+i.bi-pencil-fill:hover{
+  color: green;
+}
+
+i.bi-trash-fill:hover {
+  color: red;
+}
+
+#id {
+  width: 10%;
+}
+
+#name {
+  width: 25%;
+}
+
+#age {
+  width: 10%;
+}
+
+#gender {
+  width: 10%;
+}
+
+#medicalCondition {
+  width: 20%;
+}
+
+#enrollmentDate {
+  width: 15%;
+}
+
+#action {
+  width: 10%;
+}
+
+
+i.bi-check-square:hover {
+  color: green;
+}
+
+i.bi-x-square:hover {
+  color: red;
+}

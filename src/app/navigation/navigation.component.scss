@@ -1,0 +1,17 @@
+
+
+button {
+  color: white;
+}
+
+button.btn {
+  --bs-btn-hover-color: white;
+  --bs-btn-hover-border-color: yellow;
+  --bs-btn-border-width: 0;
+  --bs-btn-border-radius: 0;
+
+  &:hover {
+    border-bottom-width: thick;
+  }
+
+}

@@ -1,0 +1,28 @@
+
+mat-form-field {
+
+  .mdc-text-field--filled {
+
+    --mdc-filled-text-field-active-indicator-height: 3px;
+    --mdc-filled-text-field-focus-active-indicator-height: 3px;
+    --mdc-filled-text-field-active-indicator-color: #6c969d;
+  }
+
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: white;
+  }
+
+  .mat-mdc-form-field.mat-focused .mat-mdc-form-field-focus-overlay {
+  }
+
+  .mat-mdc-form-field-focus-overlay {
+    background-color: white;
+
+  }
+
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-floating-label, .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-floating-label--float-above {
+    color: #6c969d;
+  }
+}
+
+
